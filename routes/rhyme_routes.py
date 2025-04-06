@@ -4,7 +4,7 @@ from prompts.rhyme_prompts import rhyme_system_message, rhyme_human_message
 from langchain_groq import ChatGroq
 
 router = APIRouter()
-model = ChatGroq(model="llama-3.3-70b-versatile")
+model = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct")
 
 @router.post("/create_rhyme")
 async def create_rhyme(rhyme_request: RhymesRequest):

@@ -4,7 +4,7 @@ from prompts.story_prompts import system_message, human_message
 from langchain_groq import ChatGroq
 
 router = APIRouter()
-model = ChatGroq(model="llama-3.3-70b-versatile")
+model = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct")
 
 @router.post("/create_story")
 async def create_story(story_request: StoryRequest):

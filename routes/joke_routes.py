@@ -4,7 +4,7 @@ from prompts.joke_prompts import joke_system_message, joke_human_message
 from langchain_groq import ChatGroq
 
 router = APIRouter()
-model = ChatGroq(model="llama-3.3-70b-versatile")
+model = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct")
 
 @router.post("/create_joke")
 async def create_joke(joke_request: JokesRequest):
