@@ -2,3 +2,4 @@ langgraph
 langchain-groq
 ipykernel
 python-dotenv
+fastapi
