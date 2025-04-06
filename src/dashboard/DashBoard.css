@@ -1,0 +1,23 @@
+.dashboard-container {
+  margin-top: 80px; /* Adjust this value if needed to avoid overlap with the fixed navbar */
+}
+
+.dashboard-tile {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.dashboard-tile:hover {
+  transform: scale(1.05);
+}
+
+.dashboard-tile img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.dashboard-tile .card-title {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+}

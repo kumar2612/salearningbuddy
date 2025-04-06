@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap');
+
+.magical-navbar {
+  background-color: #4b0082; /* Indigo color */
+  font-family: 'Almendra SC', sans-serif; /* Custom font for a magical look */
+}
+
+.magical-brand {
+  color: #ffd700; /* Gold color */
+  font-size: 1.5rem;
+}
+
+.magical-link, .magical-dropdown .dropdown-item, .magical-dropdown-item {
+  color: #ffd700; /* Gold color */
+  font-size: 1.2rem;
+}
+
+.magical-link:hover, .magical-dropdown .dropdown-item:hover, .magical-dropdown-item:hover {
+  color: #ff4500; /* OrangeRed color */
+}
+
+.magical-dropdown .dropdown-menu {
+  background-color: #4b0082; /* Indigo background for dropdown */
+}
+
+.magical-search {
+  border: 2px solid #ffd700; /* Gold border */
+}
+
+.magical-button {
+  background-color: #ffd700; /* Gold background */
+  color: #4b0082; /* Indigo text */
+  border: none;
+}
+
+.magical-button:hover {
+  background-color: #ff4500; /* OrangeRed background */
+  color: #fff; /* White text */
+}
