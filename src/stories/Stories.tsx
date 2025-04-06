@@ -18,6 +18,7 @@ const Stories = () => {
   })
   const [story, setStory] = useState<string | null>(null)
   const [loading, setLoading] = useState(false) // State to track loading
+  const [isReading, setIsReading] = useState(false) // State to track if the story is being read aloud
 
   const handleClose = () => setShowModal(false)
   const handleShow = () => setShowModal(true)
@@ -71,11 +72,68 @@ const Stories = () => {
     return updatedStory
   }
 
+  // Function to read the story aloud
+  const readStoryAloud = () => {
+    if (!story) return
+
+    // Remove emojis from the story
+    const storyWithoutEmojis = story.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '')
+
+    const utterance = new SpeechSynthesisUtterance(storyWithoutEmojis)
+    const languageCode = getLanguageCode(formData.language)
+
+    // Set the language for the utterance
+    utterance.lang = languageCode
+
+    // Check if the selected language is supported
+    const voices = speechSynthesis.getVoices()
+    const voice = voices.find((v) => v.lang === languageCode)
+
+    if (voice) {
+      utterance.voice = voice
+    } else {
+      console.warn(`No voice found for language: ${formData.language} (${languageCode})`)
+    }
+
+    utterance.onstart = () => setIsReading(true)
+    utterance.onend = () => setIsReading(false)
+
+    speechSynthesis.speak(utterance)
+  }
+
+  // Function to stop reading the story
+  const stopStoryReading = () => {
+    speechSynthesis.cancel()
+    setIsReading(false)
+  }
+
+  // Helper function to map language to language codes
+  const getLanguageCode = (language: string): string => {
+    const languageMap: { [key: string]: string } = {
+      English: 'en-US',
+      Hindi: 'hi-IN',
+      Spanish: 'es-ES',
+      French: 'fr-FR',
+      German: 'de-DE',
+      Telugu: 'te-IN',
+      Tamil: 'ta-IN',
+      Kannada: 'kn-IN',
+      Malayalam: 'ml-IN',
+    }
+    return languageMap[language] || 'en-US' // Default to English if language is not found
+  }
+
   return (
     <div className="stories-container">
       <h1>Stories</h1>
       {story ? (
         <div className="story-content">
+          <Button
+            className={`read-aloud-button ${isReading ? 'reading' : ''}`}
+            onClick={isReading ? stopStoryReading : readStoryAloud}
+          >
+            {isReading ? 'Stop Reading' : 'Read Aloud'}
+          </Button>
           <ReactMarkdown>{story}</ReactMarkdown>
         </div>
       ) : (

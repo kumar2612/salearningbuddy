@@ -18,6 +18,7 @@ const Jokes = () => {
   })
   const [joke, setJoke] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [isReading, setIsReading] = useState(false) // State to track if the joke is being read aloud
 
   const handleClose = () => setShowModal(false)
   const handleShow = () => setShowModal(true)
@@ -70,11 +71,68 @@ const Jokes = () => {
     return updatedJoke
   }
 
+  // Function to read the joke aloud
+  const readJokeAloud = () => {
+    if (!joke) return
+
+    // Remove emojis from the joke
+    const jokeWithoutEmojis = joke.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '')
+
+    const utterance = new SpeechSynthesisUtterance(jokeWithoutEmojis)
+    const languageCode = getLanguageCode(formData.language)
+
+    // Set the language for the utterance
+    utterance.lang = languageCode
+
+    // Check if the selected language is supported
+    const voices = speechSynthesis.getVoices()
+    const voice = voices.find((v) => v.lang === languageCode)
+
+    if (voice) {
+      utterance.voice = voice
+    } else {
+      console.warn(`No voice found for language: ${formData.language} (${languageCode})`)
+    }
+
+    utterance.onstart = () => setIsReading(true)
+    utterance.onend = () => setIsReading(false)
+
+    speechSynthesis.speak(utterance)
+  }
+
+  // Function to stop reading the joke
+  const stopJokeReading = () => {
+    speechSynthesis.cancel()
+    setIsReading(false)
+  }
+
+  // Helper function to map language to language codes
+  const getLanguageCode = (language: string): string => {
+    const languageMap: { [key: string]: string } = {
+      English: 'en-US',
+      Hindi: 'hi-IN',
+      Spanish: 'es-ES',
+      French: 'fr-FR',
+      German: 'de-DE',
+      Telugu: 'te-IN',
+      Tamil: 'ta-IN',
+      Kannada: 'kn-IN',
+      Malayalam: 'ml-IN',
+    }
+    return languageMap[language] || 'en-US' // Default to English if language is not found
+  }
+
   return (
     <div className="jokes-container">
       <h1>Jokes</h1>
       {joke ? (
         <div className="joke-content">
+          <Button
+            className={`read-aloud-button ${isReading ? 'reading' : ''}`}
+            onClick={isReading ? stopJokeReading : readJokeAloud}
+          >
+            {isReading ? 'Stop Reading' : 'Read Aloud'}
+          </Button>
           <ReactMarkdown>{joke}</ReactMarkdown>
         </div>
       ) : (

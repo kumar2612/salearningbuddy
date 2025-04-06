@@ -48,7 +48,7 @@ const SnakeGame = () => {
 
     const interval = setInterval(() => {
       moveSnake()
-    }, 200)
+    }, 500)
 
     return () => clearInterval(interval)
   }, [snake, direction, gameOver, paused])

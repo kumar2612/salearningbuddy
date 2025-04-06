@@ -5,10 +5,12 @@
 }
 
 .joke-content {
-  margin-top: 20px;
+  position: relative;
   padding: 20px;
-  background-color: #f9f9f9;
+  border: 1px solid #ccc;
   border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: 'Almendra SC', serif;
   color: #4b0082;
@@ -61,4 +63,40 @@
 .gender-button:hover {
   background-color: #ffd700;
   color: #4b0082;
+}
+
+.read-aloud-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #4b0082;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.read-aloud-button:hover {
+  background-color: #ff4500;
+}
+
+.read-aloud-button.reading {
+  animation: pulse 1s infinite;
+  background-color: #ff4500;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
