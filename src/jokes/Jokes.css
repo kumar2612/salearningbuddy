@@ -1,11 +1,10 @@
-.stories-container {
+.jokes-container {
   padding: 20px;
-  padding-top: 80px; /* Add padding to prevent content from being cut off by the Navbar */
+  padding-top: 80px; /* Prevent content from being cut off by the Navbar */
   text-align: center;
-  font-family: 'Almendra SC', serif; /* Magical font */
 }
 
-.story-content {
+.joke-content {
   margin-top: 20px;
   padding: 20px;
   background-color: #f9f9f9;
@@ -15,16 +14,16 @@
   color: #4b0082;
 }
 
-.story-content h1, .story-content h2, .story-content h3 {
+.joke-content h1, .joke-content h2, .joke-content h3 {
   color: #ff4500;
 }
 
-.story-content p {
+.joke-content p {
   font-size: 1.2rem;
   line-height: 1.6;
 }
 
-.new-story-button {
+.new-joke-button {
   margin-top: 20px;
   background-color: #ffd700;
   color: #4b0082;
@@ -35,7 +34,7 @@
   cursor: pointer;
 }
 
-.new-story-button:hover {
+.new-joke-button:hover {
   background-color: #ff4500;
   color: #fff;
 }

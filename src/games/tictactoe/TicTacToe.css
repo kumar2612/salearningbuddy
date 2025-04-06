@@ -1,0 +1,32 @@
+.tic-tac-toe {
+  margin-top: 20px;
+  padding: 20px;
+  padding-top: 80px; /* Prevent content from being cut off by the Navbar */
+  text-align: center;
+}
+
+h2 {
+  color: #4b0082;
+}
+
+.reset-button,
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffd700;
+  color: #4b0082;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover,
+.back-button:hover {
+  background-color: #ff4500;
+  color: #fff;
+}
+
+.back-button {
+  margin-left: 10px;
+}

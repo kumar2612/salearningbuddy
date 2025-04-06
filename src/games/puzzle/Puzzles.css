@@ -1,0 +1,95 @@
+.puzzles-container {
+    text-align: center;
+    padding: 20px;
+    padding-top: 80px; /* Prevent content from being cut off */
+}
+
+.puzzle-counter {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #4b0082;
+}
+
+.puzzle {
+    margin: 20px 0;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.option-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffd700;
+    color: #4b0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option-button:hover {
+    background-color: #ff4500;
+    color: #fff;
+}
+
+.puzzle-completed {
+    margin: 20px 0;
+}
+
+.puzzle-error {
+    margin: 20px 0;
+    color: red;
+    font-size: 1.2rem;
+}
+
+.retry-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.retry-button:hover {
+    background-color: #4b0082;
+}
+
+.reset-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background-color: #ff4500;
+    color: #fff;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #ff4500;
+    color: #fff;
+}

@@ -1,0 +1,90 @@
+.memory-game {
+  text-align: center;
+  padding: 20px;
+  padding-top: 80px; /* Add padding to prevent content from being cut off */
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.memory-card {
+  width: 80px;
+  height: 80px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.memory-card.flipped .card-front {
+  transform: rotateY(0);
+}
+
+.memory-card.flipped .card-back {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+.card-front {
+  background-color: #ffd700;
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  background-color: #4b0082;
+  color: #fff;
+  transform: rotateY(0);
+}
+
+.win-message {
+  font-size: 1.5rem;
+  color: green;
+  margin: 20px 0;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffd700;
+  color: #4b0082;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #ff4500;
+  color: #fff;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #4b0082;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #ff4500;
+  color: #fff;
+}

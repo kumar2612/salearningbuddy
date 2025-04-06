@@ -14,6 +14,7 @@ const Stories = () => {
     age: 7,
     gender: 'boy',
     qualities: '',
+    language: 'English', // Default language
   })
   const [story, setStory] = useState<string | null>(null)
   const [loading, setLoading] = useState(false) // State to track loading
@@ -21,7 +22,7 @@ const Stories = () => {
   const handleClose = () => setShowModal(false)
   const handleShow = () => setShowModal(true)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
@@ -44,10 +45,11 @@ const Stories = () => {
       age: formData.age,
       gender: formData.gender,
       qualities: formData.qualities.split(',').map((quality) => quality.trim()),
+      language: formData.language, // Include language in the payload
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/create_story', payload)
+      const response = await axios.post('http://localhost:8000/story/create_story', payload)
       const rawStory = response.data.story_request.story
       setStory(addIconsToStory(rawStory)) // Add icons to the story
       handleClose()
@@ -149,6 +151,25 @@ const Stories = () => {
                 onChange={handleChange}
                 className="fun-input"
               />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Select Language</Form.Label>
+              <Form.Select
+                name="language"
+                value={formData.language}
+                onChange={handleChange}
+                className="fun-input"
+              >
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Malayalam">Malayalam</option>
+              </Form.Select>
             </Form.Group>
           </Form>
         </Modal.Body>
